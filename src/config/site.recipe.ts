@@ -4,7 +4,7 @@ export const SITE_RECIPE: SiteRecipe = {
   productFamily: 'editorial',
   themePack: 'medium-journal',
   homepageTemplate: 'article-home',
-  navbarTemplate: 'editorial-bar',
+  navbarTemplate: 'globalnewsdock-bar',
   footerTemplate: 'editorial-footer',
   motionPack: 'minimal',
   primaryTask: 'mediaDistribution',
