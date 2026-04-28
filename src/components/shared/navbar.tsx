@@ -65,6 +65,14 @@ const variantClasses = {
     cta: 'rounded-lg bg-[#1f2617] text-[#edf5dc] hover:bg-[#2f3a24]',
     mobile: 'border-t border-[#d7deca] bg-[#f4f6ef]',
   },
+  'globalnewsdock-bar': {
+    shell: 'border-b border-brand-orange/20 bg-white/95 text-foreground backdrop-blur-xl',
+    logo: 'rounded-2xl border border-brand-orange/30 bg-gradient-to-br from-brand-yellow/20 to-brand-orange/20 shadow-sm',
+    active: 'bg-brand-red text-white',
+    idle: 'text-muted-foreground hover:bg-brand-orange/10 hover:text-brand-red',
+    cta: 'rounded-full bg-brand-red text-white hover:bg-brand-red/90',
+    mobile: 'border-t border-brand-orange/20 bg-white/98',
+  },
 } as const
 
 const directoryPalette = {
