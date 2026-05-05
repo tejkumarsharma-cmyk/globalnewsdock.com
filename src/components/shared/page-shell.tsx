@@ -16,10 +16,10 @@ export function PageShell({
   children?: ReactNode
 }) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <NavbarShell />
       <main>
-        <section className="border-b border-border bg-secondary/30">
+        <section className="border-b border-slate-100 bg-white">
           <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
