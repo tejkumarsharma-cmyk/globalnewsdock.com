@@ -6,6 +6,8 @@ import { SITE_CONFIG } from '@/lib/site-config'
 import { buildPageMetadata } from '@/lib/seo'
 import { siteContent } from '@/config/site.content'
 import { GlobalnewsdockHomepage } from '@/components/homepage/globalnewsdock-homepage'
+import { fetchTaskPosts, buildPostUrl, getPostImages } from '@/lib/task-data'
+import { getHomeEditorialMockPosts } from '@/lib/home-editorial-mock'
 
 export const revalidate = 300
 
@@ -20,15 +22,6 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: [...siteContent.home.metadata.keywords],
   })
 }
-
-
-
-
-
-
-
-
-
 
 export default async function HomePage() {
   const schemaData = [
@@ -53,11 +46,32 @@ export default async function HomePage() {
     },
   ]
 
+  // Fetch real press releases; fall back to mock if feed is empty
+  const rawPosts = await fetchTaskPosts('mediaDistribution', 6, { allowMockFallback: true })
+  const posts = (rawPosts.length ? rawPosts : getHomeEditorialMockPosts().slice(0, 6)).map((p) => {
+    const images = getPostImages(p)
+    const category =
+      typeof (p.content as any)?.category === 'string'
+        ? (p.content as any).category
+        : 'Press Release'
+    return {
+      id: p.id,
+      title: p.title,
+      slug: p.slug,
+      summary: p.summary ?? '',
+      category,
+      author: p.authorName ?? 'Editorial Team',
+      image: images[0] ?? null,
+      href: buildPostUrl('mediaDistribution', p.slug),
+      publishedAt: p.publishedAt ?? null,
+    }
+  })
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <NavbarShell />
       <SchemaJsonLd data={schemaData} />
-      <GlobalnewsdockHomepage />
+      <GlobalnewsdockHomepage pressReleases={posts} />
       <Footer />
     </div>
   )
