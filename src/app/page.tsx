@@ -46,14 +46,14 @@ export default async function HomePage() {
     },
   ]
 
-  // Fetch real press releases; fall back to mock if feed is empty
+  // Fetch real release media; fall back to mock if feed is empty
   const rawPosts = await fetchTaskPosts('mediaDistribution', 6, { allowMockFallback: true })
   const posts = (rawPosts.length ? rawPosts : getHomeEditorialMockPosts().slice(0, 6)).map((p) => {
     const images = getPostImages(p)
     const category =
       typeof (p.content as any)?.category === 'string'
         ? (p.content as any).category
-        : 'Press Release'
+        : 'Release Media'
     return {
       id: p.id,
       title: p.title,

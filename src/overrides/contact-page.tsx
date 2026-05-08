@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { SITE_CONFIG } from '@/lib/site-config'
-import { Phone, Clock, MapPin, Mail, ChevronRight } from 'lucide-react'
+import { Mail, ChevronRight } from 'lucide-react'
 
 export const CONTACT_PAGE_OVERRIDE_ENABLED = true
 
@@ -26,7 +26,7 @@ const ORG_TYPES = [
 
 const SUBJECTS = [
   'Please Select',
-  'Submit a Press Release',
+  'Submit a Release Media',
   'Pricing & Plans',
   'Distribution Question',
   'Technical Support',
@@ -64,12 +64,9 @@ export function ContactPageOverride() {
           </p>
         </section>
 
-        {/* ── Two-column layout ───────────────────────────────────────────── */}
-        <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1fr_300px]">
-
-            {/* ── Contact form ──────────────────────────────────────────── */}
-            <div className="rounded-2xl border border-sky-100 bg-white p-8 shadow-sm">
+        {/* ── Form — full width ───────────────────────────────────────────── */}
+        <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-sky-100 bg-white p-8 shadow-sm">
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#e0f5fb]">
@@ -204,69 +201,6 @@ export function ContactPageOverride() {
                   </div>
                 </form>
               )}
-            </div>
-
-            {/* ── Sidebar — contact info ─────────────────────────────────── */}
-            <aside className="space-y-6">
-              {/* Telephone hours */}
-              <div className="rounded-2xl border border-sky-100 bg-[#f0f9ff] p-5">
-                <div className="mb-3 flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e0f5fb]">
-                    <Clock className="h-4 w-4 text-[#0e6b8a]" />
-                  </div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#0d3d56]">
-                    Telephone Hours
-                  </p>
-                </div>
-                <p className="text-sm text-slate-600">Monday to Friday</p>
-                <p className="text-sm text-slate-600">8:30am to 5:00pm Pacific (PDT)</p>
-              </div>
-
-              {/* Toll free */}
-              <div className="rounded-2xl border border-sky-100 bg-white p-5 shadow-sm">
-                <div className="mb-3 flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e0f5fb]">
-                    <Phone className="h-4 w-4 text-[#0e6b8a]" />
-                  </div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#0d3d56]">
-                    Toll Free Telephone
-                  </p>
-                </div>
-                <p className="text-sm font-semibold text-slate-800">1-888-880-9539</p>
-                <p className="text-sm text-slate-500">(646) 417-8294</p>
-              </div>
-
-              {/* Email */}
-              <div className="rounded-2xl border border-sky-100 bg-white p-5 shadow-sm">
-                <div className="mb-3 flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e0f5fb]">
-                    <Mail className="h-4 w-4 text-[#0e6b8a]" />
-                  </div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#0d3d56]">
-                    Email Us
-                  </p>
-                </div>
-                <p className="text-sm font-semibold text-[#0e6b8a]">
-                  contact@{SITE_CONFIG.domain}
-                </p>
-              </div>
-
-              {/* Address */}
-              <div className="rounded-2xl border border-sky-100 bg-white p-5 shadow-sm">
-                <div className="mb-3 flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e0f5fb]">
-                    <MapPin className="h-4 w-4 text-[#0e6b8a]" />
-                  </div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#0d3d56]">
-                    US Address
-                  </p>
-                </div>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Suite 1400 – 506 Second Avenue<br />
-                  Seattle, WA 98104, USA
-                </p>
-              </div>
-            </aside>
           </div>
         </section>
 

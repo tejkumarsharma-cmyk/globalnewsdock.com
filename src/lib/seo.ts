@@ -240,6 +240,13 @@ export async function buildSiteMetadata(): Promise<Metadata> {
     robots: buildRobots(ctx.robotsIndex, ctx.robotsFollow),
     authors: [{ name: SITE_CONFIG.name }],
     creator: SITE_CONFIG.name,
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon.png', type: 'image/png', sizes: '32x32' },
+      ],
+      apple: [{ url: '/apple-icon.png' }],
+    },
     alternates: {
       canonical: ctx.canonical,
       languages: {

@@ -37,7 +37,7 @@ export default function AboutPage() {
   return (
     <PageShell
       title={`About ${SITE_CONFIG.name}`}
-      description={`${SITE_CONFIG.name} is a modern press release distribution platform built for brands, agencies, and PR teams who need real reach — fast.`}
+      description={`${SITE_CONFIG.name} is a modern release media distribution platform built for brands, agencies, and PR teams who need real reach — fast.`}
       actions={
         <>
           <Button
@@ -65,7 +65,7 @@ export default function AboutPage() {
               Our Story
             </Badge>
             <h2 className="text-2xl font-semibold text-[#0d3d56]">
-              A single platform for press release distribution that actually works.
+              A single platform for release media distribution that actually works.
             </h2>
             <p className="text-sm leading-relaxed text-slate-600">
               {SITE_CONFIG.name} connects businesses with thousands of media outlets, journalists,
@@ -156,7 +156,7 @@ export default function AboutPage() {
               Ready to get started?
             </p>
             <h3 className="mt-1 text-xl font-bold">
-              Distribute your next press release today
+              Distribute your next release media today
             </h3>
             <p className="mt-1 text-sm text-slate-300">
               Join thousands of brands already using {SITE_CONFIG.name}.

@@ -3,7 +3,7 @@ import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { fetchTaskPosts, buildPostUrl } from '@/lib/task-data'
 import type { TaskKey } from '@/lib/site-config'
-import { Calendar, Tag, ArrowRight, Search, ChevronRight } from 'lucide-react'
+import { Tag, ArrowRight, Search, ChevronRight } from 'lucide-react'
 
 export const TASK_LIST_PAGE_OVERRIDE_ENABLED = true
 
@@ -26,11 +26,6 @@ function pickImage(post: { slug: string; media?: Array<{ url: string }> | null }
   let hash = 0
   for (let i = 0; i < post.slug.length; i++) hash = (hash * 31 + post.slug.charCodeAt(i)) >>> 0
   return FALLBACK_IMAGES[hash % FALLBACK_IMAGES.length]
-}
-
-function fmtDate(iso?: string | null) {
-  if (!iso) return ''
-  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
 function excerpt(text?: string | null, max = 160) {
@@ -61,7 +56,7 @@ export async function TaskListPageOverride(_: { task: TaskKey; category?: string
                 Browse News Releases
               </h1>
               <p className="mt-1 text-sm text-slate-300">
-                The latest press releases, media announcements, and newsroom updates.
+                The latest release media, media announcements, and newsroom updates.
               </p>
             </div>
             <Link
@@ -105,7 +100,7 @@ export async function TaskListPageOverride(_: { task: TaskKey; category?: string
                   {/* text */}
                   <div className="flex flex-col justify-center p-6 lg:p-8">
                     <span className="mb-3 inline-block w-fit rounded-full bg-[#e0f5fb] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#0e6b8a]">
-                      {(featured.content as any)?.category ?? 'Press Release'}
+                      {(featured.content as any)?.category ?? 'Release Media'}
                     </span>
                     <h2 className="text-xl font-extrabold leading-snug text-[#0d3d56] group-hover:text-[#0e6b8a] transition-colors line-clamp-3 lg:text-2xl">
                       {featured.title}
@@ -114,12 +109,6 @@ export async function TaskListPageOverride(_: { task: TaskKey; category?: string
                       {excerpt(featured.summary, 200)}
                     </p>
                     <div className="mt-4 flex items-center gap-3 text-xs text-slate-400">
-                      {fmtDate(featured.publishedAt) && (
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {fmtDate(featured.publishedAt)}
-                        </span>
-                      )}
                       <span className="flex items-center gap-1 text-[#f05a28] font-semibold">
                         Read more <ArrowRight className="h-3 w-3" />
                       </span>
@@ -141,8 +130,7 @@ export async function TaskListPageOverride(_: { task: TaskKey; category?: string
 
                 <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
                   {grid.map((post) => {
-                    const cat = (post.content as any)?.category ?? 'Press Release'
-                    const date = fmtDate(post.publishedAt)
+                    const cat = (post.content as any)?.category ?? 'Release Media'
                     const img = pickImage(post)
                     return (
                       <Link
@@ -169,13 +157,7 @@ export async function TaskListPageOverride(_: { task: TaskKey; category?: string
                           <p className="mt-2 text-xs leading-relaxed text-slate-500 line-clamp-2">
                             {excerpt(post.summary, 100)}
                           </p>
-                          <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-3">
-                            {date && (
-                              <span className="flex items-center gap-1 text-[10px] text-slate-400">
-                                <Calendar className="h-3 w-3" />
-                                {date}
-                              </span>
-                            )}
+                          <div className="mt-3 flex items-center justify-end border-t border-slate-100 pt-3">
                             <span className="text-[10px] font-semibold text-[#f05a28]">
                               Read →
                             </span>
@@ -251,7 +233,7 @@ export async function TaskListPageOverride(_: { task: TaskKey; category?: string
                 Get Featured
               </p>
               <p className="mt-2 text-sm font-semibold leading-snug">
-                Want your press release featured on {' '}
+                Want your release media featured on {' '}
                 <span className="text-[#5dd6f5]">our newsroom</span>?
               </p>
               <p className="mt-1 text-xs text-slate-300">
@@ -273,7 +255,6 @@ export async function TaskListPageOverride(_: { task: TaskKey; category?: string
               <div className="space-y-4">
                 {sidebar.map((post) => {
                   const img = pickImage(post)
-                  const date = fmtDate(post.publishedAt)
                   return (
                     <Link
                       key={post.id}
@@ -291,12 +272,6 @@ export async function TaskListPageOverride(_: { task: TaskKey; category?: string
                         <p className="text-xs font-semibold leading-snug text-slate-700 group-hover:text-[#0e6b8a] transition-colors line-clamp-2">
                           {post.title}
                         </p>
-                        {date && (
-                          <p className="mt-1 flex items-center gap-1 text-[10px] text-slate-400">
-                            <Calendar className="h-2.5 w-2.5" />
-                            {date}
-                          </p>
-                        )}
                       </div>
                     </Link>
                   )

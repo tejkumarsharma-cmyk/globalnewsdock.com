@@ -18,7 +18,7 @@ const sections = [
   {
     icon: FileText,
     title: 'Content Ownership',
-    body: 'You retain full ownership of the press releases and content you submit. By submitting, you grant us a non-exclusive, royalty-free licence to distribute and display your content through our media network as directed by you.',
+    body: 'You retain full ownership of the release media and content you submit. By submitting, you grant us a non-exclusive, royalty-free licence to distribute and display your content through our media network as directed by you.',
   },
   {
     icon: AlertTriangle,

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Search, Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import { SITE_CONFIG } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 
 export const NAVBAR_OVERRIDE_ENABLED = true
@@ -27,13 +26,12 @@ export function NavbarOverride() {
 
         {/* ── Logo — fixed width so center nav truly centres ─────────────────── */}
         <div className="flex w-56 shrink-0 items-center">
-          <Link href="/" className="flex flex-col leading-tight">
-            <span className="block text-[15px] font-bold text-slate-900 tracking-tight">
-              {SITE_CONFIG.name}
-            </span>
-            <span className="block text-[9px] font-semibold uppercase tracking-[0.22em] text-slate-400 mt-0.5">
-              Media Press Release
-            </span>
+          <Link href="/" className="flex items-center">
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="h-10 w-auto object-contain"
+            />
           </Link>
         </div>
 

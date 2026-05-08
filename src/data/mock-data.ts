@@ -754,27 +754,27 @@ export const mockDashboardStats: DashboardStats = {
 export const mockTeamMembers: TeamMember[] = [
   {
     id: 'team-1',
-    name: 'Avery Brooks',
-    role: 'Head of Community',
-    avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop',
-    bio: 'Building programs that connect creators with meaningful collaborations.',
-    location: 'Austin, TX'
+    name: 'Sarah Mitchell',
+    role: 'Head of Distribution',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&auto=format&fit=crop&crop=faces&q=80',
+    bio: 'Building media partnerships that get release media in front of the right journalists.',
+    location: 'New York, NY'
   },
   {
     id: 'team-2',
-    name: 'Jordan Lee',
-    role: 'Product Lead',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop',
-    bio: 'Designing calm, curated experiences for modern teams.',
+    name: 'Marcus Chen',
+    role: 'Editorial Director',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&auto=format&fit=crop&crop=faces&q=80',
+    bio: 'Ensuring every release meets editorial standards before it reaches 10,000+ outlets.',
     location: 'San Francisco, CA'
   },
   {
     id: 'team-3',
-    name: 'Priya Desai',
-    role: 'Engineering',
-    avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop',
-    bio: 'Focused on reliability, search, and delightful performance.',
-    location: 'New York, NY'
+    name: 'Emily Carter',
+    role: 'Head of Technology',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&auto=format&fit=crop&crop=faces&q=80',
+    bio: 'Focused on platform reliability, search indexing, and distribution infrastructure.',
+    location: 'Austin, TX'
   }
 ]
 

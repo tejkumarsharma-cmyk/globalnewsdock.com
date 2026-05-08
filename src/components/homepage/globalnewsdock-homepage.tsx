@@ -75,7 +75,7 @@ const HOW_IT_WORKS = [
   { icon: BarChart2,title: 'Media Reporting',        sub: 'Track every placement' },
 ]
 
-// ─── Press release post type (passed from server) ────────────────────────────
+// ─── Release media post type (passed from server) ────────────────────────────
 export type PressReleasePost = {
   id: string
   title: string
@@ -93,15 +93,15 @@ const FALLBACK_IMAGES = [IMG.blog1, IMG.blog2, IMG.dashboard, IMG.teamWork]
 
 const REVIEWS = [
   { stars: 5, text: 'Incredible reach. Our announcement was picked up by 40+ outlets within 24 hours.', name: 'James T.',  company: 'Founder' },
-  { stars: 5, text: 'The editorial team caught two errors before publishing. That level of care is rare.', name: 'Priya K.',  company: 'PR Manager' },
+  { stars: 5, text: 'The editorial team caught two errors before publishing. That level of care is rare.', name: 'Rachel M.',  company: 'PR Manager' },
   { stars: 5, text: 'Simple pricing, no hidden fees, and the dashboard is genuinely easy to use.', name: 'Carlos M.', company: 'Agency Lead' },
   { stars: 5, text: 'We switched from a competitor and the difference in pickup quality was immediate.', name: 'Lena W.',   company: 'Brand Strategist' },
 ]
 
 const FAQS = [
-  { q: 'How quickly will my press release go live?',       a: 'Most releases are reviewed and published within 2–4 business hours after submission.' },
+  { q: 'How quickly will my release media go live?',       a: 'Most releases are reviewed and published within 2–4 business hours after submission.' },
   { q: 'Can I track where my release was distributed?',    a: 'Yes. Every plan includes a distribution report showing all pickup locations and estimated reach.' },
-  { q: 'Is there a word limit on press releases?',         a: 'Standard releases support up to 800 words. Extended releases are available on Platinum plans.' },
+  { q: 'Is there a word limit on release media?',         a: 'Standard releases support up to 800 words. Extended releases are available on Platinum plans.' },
   { q: 'Do you offer writing services?',                   a: 'Yes. Our editorial team can write or polish your release as an add-on to any plan.' },
 ]
 
@@ -195,7 +195,7 @@ export function GlobalnewsdockHomepage({ pressReleases = [] }: { pressReleases?:
                 {/* hero illustration */}
                 <img
                   src={IMG.hero}
-                  alt="Press release distribution illustration"
+                alt="Release media distribution illustration"
                   className="absolute inset-0 h-full w-full rounded-full object-cover opacity-30"
                 />
                 {/* centre FOX card */}
@@ -315,7 +315,7 @@ export function GlobalnewsdockHomepage({ pressReleases = [] }: { pressReleases?:
             <div className="relative overflow-hidden rounded-3xl shadow-xl">
               <img
                 src={IMG.teamWork}
-                alt="Team collaborating on press release strategy"
+                alt="Team collaborating on release media strategy"
                 className="h-80 w-full object-cover"
               />
 
@@ -387,13 +387,13 @@ export function GlobalnewsdockHomepage({ pressReleases = [] }: { pressReleases?:
         </div>
       </section>
 
-      {/* ══ PRESS RELEASES ════════════════════════════════════════════════════ */}
+      {/* ══ RELEASE MEDIA ════════════════════════════════════════════════════ */}
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 flex items-end justify-between">
             <div>
               <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-[#0e6b8a]">
-                Latest Press Releases
+                Latest Release Media
               </p>
               <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
                 Learn what drives distribution performance
@@ -406,7 +406,7 @@ export function GlobalnewsdockHomepage({ pressReleases = [] }: { pressReleases?:
           </div>
 
           {pressReleases.length === 0 ? (
-            <p className="text-sm text-slate-400 text-center py-10">No press releases yet.</p>
+            <p className="text-sm text-slate-400 text-center py-10">No release media yet.</p>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {pressReleases.map((post, idx) => {
@@ -459,7 +459,7 @@ export function GlobalnewsdockHomepage({ pressReleases = [] }: { pressReleases?:
           <div className="mt-8 text-center sm:hidden">
             <Link href="/updates"
               className="text-sm font-medium text-[#0e6b8a] hover:underline">
-              View all press releases →
+              View all release media →
             </Link>
           </div>
         </div>

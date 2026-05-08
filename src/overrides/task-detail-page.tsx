@@ -5,7 +5,7 @@ import { Footer } from '@/components/shared/footer'
 import { fetchTaskPostBySlug, fetchTaskPosts, buildPostUrl } from '@/lib/task-data'
 import type { TaskKey } from '@/lib/site-config'
 import { formatRichHtml, RichContent } from '@/components/shared/rich-content'
-import { Calendar, User, Tag, ArrowLeft, ChevronRight, Search } from 'lucide-react'
+import { User, Tag, ArrowLeft, ChevronRight, Search } from 'lucide-react'
 
 export const TASK_DETAIL_PAGE_OVERRIDE_ENABLED = true
 
@@ -35,13 +35,8 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
     .slice(0, 6)
 
   const content = (post.content || {}) as Record<string, unknown>
-  const category = typeof content.category === 'string' ? content.category : 'Press Release'
+  const category = typeof content.category === 'string' ? content.category : 'Release Media'
   const author = post.authorName || 'Editorial Desk'
-  const date = post.publishedAt
-    ? new Date(post.publishedAt).toLocaleDateString('en-US', {
-        month: 'long', day: 'numeric', year: 'numeric',
-      })
-    : ''
 
   const html = formatRichHtml(
     (content.body as string) || (content.description as string) || post.summary || '',
@@ -77,7 +72,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
           <div className="mb-6 flex items-center justify-center gap-2 text-xs text-slate-400">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight className="h-3 w-3" />
-            <Link href="/updates" className="hover:text-white transition-colors">Press Releases</Link>
+            <Link href="/updates" className="hover:text-white transition-colors">Release Media</Link>
             <ChevronRight className="h-3 w-3" />
             <span className="text-slate-300 line-clamp-1 max-w-xs">{post.title}</span>
           </div>
@@ -97,12 +92,6 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
               <span className="flex items-center gap-1.5">
                 <User className="h-3.5 w-3.5 text-[#5dd6f5]" />
                 {author}
-              </span>
-            )}
-            {date && (
-              <span className="flex items-center gap-1.5">
-                <Calendar className="h-3.5 w-3.5 text-[#5dd6f5]" />
-                {date}
               </span>
             )}
             <span className="flex items-center gap-1.5">
@@ -136,7 +125,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
               className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-[#0e6b8a] hover:text-[#0d3d56] transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Press Releases
+              Back to Release Media
             </Link>
 
             {/* summary lead */}
@@ -233,7 +222,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
                 Distribute Your News
               </p>
               <p className="mt-2 text-sm font-semibold leading-snug">
-                Get your press release in front of 10,000+ media outlets.
+                Get your release media in front of 10,000+ media outlets.
               </p>
               <Link
                 href="/contact"
@@ -250,11 +239,6 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
               </p>
               <div className="space-y-4">
                 {recent.map((item) => {
-                  const itemDate = item.publishedAt
-                    ? new Date(item.publishedAt).toLocaleDateString('en-US', {
-                        month: 'short', day: 'numeric', year: 'numeric',
-                      })
-                    : ''
                   return (
                     <Link
                       key={item.id}
@@ -264,12 +248,6 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
                       <p className="text-sm font-medium leading-snug text-slate-700 group-hover:text-[#0e6b8a] transition-colors line-clamp-2">
                         {item.title}
                       </p>
-                      {itemDate && (
-                        <p className="mt-1 flex items-center gap-1 text-xs text-slate-400">
-                          <Calendar className="h-3 w-3" />
-                          {itemDate}
-                        </p>
-                      )}
                     </Link>
                   )
                 })}
@@ -290,20 +268,15 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
           <section className="mt-16 border-t border-slate-100 pt-12">
             <div className="mb-6 flex items-center gap-3">
               <div className="h-1 w-8 rounded-full bg-[#f05a28]" />
-              <h2 className="text-xl font-bold text-[#0d3d56]">More Press Releases</h2>
+              <h2 className="text-xl font-bold text-[#0d3d56]">More Release Media</h2>
             </div>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {recent.slice(0, 3).map((item) => {
                 const itemImg = (Array.isArray(item.media) && item.media[0]?.url) || pickFallback(item.slug)
-                const itemDate = item.publishedAt
-                  ? new Date(item.publishedAt).toLocaleDateString('en-US', {
-                      month: 'short', day: 'numeric', year: 'numeric',
-                    })
-                  : ''
                 const itemCategory =
                   typeof (item.content as any)?.category === 'string'
                     ? (item.content as any).category
-                    : 'Press Release'
+                    : 'Release Media'
                 return (
                   <Link
                     key={item.id}
@@ -324,12 +297,6 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
                       <p className="text-sm font-semibold leading-snug text-slate-800 group-hover:text-[#0e6b8a] transition-colors line-clamp-2">
                         {item.title}
                       </p>
-                      {itemDate && (
-                        <p className="mt-2 flex items-center gap-1 text-xs text-slate-400">
-                          <Calendar className="h-3 w-3" />
-                          {itemDate}
-                        </p>
-                      )}
                     </div>
                   </Link>
                 )
